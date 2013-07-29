@@ -1,0 +1,13 @@
+﻿@model  string
+@*todo handle when we have a saved session*@
+<script>
+    $(document).ready(function () {
+        var sessionid = '@ViewData["sessionid"]';
+        var sharedSession = '@Html.Raw(Model)';
+        if (sharedSession.length) new GROLIAAS.ListDetailsView({sharedSession:sharedSession, sessionId:sessionid}).realize();
+        else new GROLIAAS.ListSetUpView().realize();
+
+
+
+    });
+</script>

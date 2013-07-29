@@ -1,0 +1,301 @@
+﻿body, input, button
+{
+    font-family: verdana;
+    font-size: 1.2em;
+    margin-top: 0;
+}
+body {
+    margin-left: 0;
+    margin-right: 0;
+}
+html
+{
+    height: 90%;
+    background: #e3e3e0;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+:focus, :active
+{
+    outline: 0;
+}
+
+*
+{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.floatingHeader
+{
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+}
+
+#accordion .ui-corner-all
+{
+    border-radius: 0px;
+}
+
+    
+
+#accordion .ui-state-active, .ui-widget-content .ui-state-active, #accordion .ui-widget-header .ui-state-active {
+    border-color: #e3e3e0;
+}
+
+#accordion .ui-widget-content
+{
+    background: white;
+}
+
+#accordion .ui-accordion-content
+{
+    background-color: #e3e3e0;
+    border-color: #e3e3e0;
+    color: #737373;
+    font-size: 13pt;
+    line-height: 16pt;
+    height: auto;
+    padding: 5px;
+}
+
+    #accordion .ui-accordion-content > *
+    {
+        margin: 0;
+        padding: 10px;
+    }
+
+#accordion .ui-accordion-header.ui-state-hover
+{
+    background-color: #e3e3e0;
+    border-bottom-color: #e3e3e0;
+    border-right-color: #e3e3e0;
+    border-left-color: #e3e3e0;
+}
+
+#accordion .ui-accordion-header.ui-state-default.ui-corner-all
+{
+    border-color: #e3e3e0;
+    border-bottom: 1px solid #999;
+    box-shadow: 0 1px #999!important;
+}
+
+#accordion .ui-accordion-header.ui-state-active
+{
+    border-top: 2px solid red;
+    border-radius: 0px;
+    border-bottom: 1px solid #999;
+}
+
+#accordion .ui-accordion-content.ui-accordion-content-active
+{
+    border-radius: 0px;
+}
+
+#accordion .ui-state-active a, .ui-state-active a:link, #accordion .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited
+{
+    color: #737373;
+    font-size: 20px;
+    font-weight: 300;
+       
+}
+
+#accordion .ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link
+{
+    color: #737373;
+}
+
+#accordion .ui-accordion-header
+{
+    margin: 0px;
+}
+
+#accordion .ui-accordion-header
+{
+    background-color: #e3e3e0;
+    background-image: none;
+}
+
+
+#header
+{
+    height: 50px;
+    font-size: 25px;
+    width: 100%;
+    background: white;
+    overflow: hidden;
+}
+
+#branding {
+    float: left;
+    margin-top: 15px;
+    font-size: 15px;
+    margin-left: 5px;
+    border-right: 1px solid #ddd;
+}
+
+.menuitem a
+{
+    color: #2489CE;
+}
+
+.menuitem
+{
+    color: #2489CE;
+    cursor: pointer;
+    margin-top: 10px;
+    float: right;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.menuitem :hover
+{
+    color: #C0D600;
+}
+/*modal*/
+#dialog.ui-dialog-content {
+    
+    
+    color: #737373;
+    
+}
+
+.ui-dialog.ui-widget.ui-widget-content.ui-corner-all
+,.ui-dialog-titlebar.ui-widget-header.ui-corner-all {
+    border-radius: 0;
+    background: white;
+    border-color: white;
+    
+}
+
+@font-face
+{
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot');
+    src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('fonts/icomoon.woff') format('woff'), url('fonts/icomoon.ttf') format('truetype'), url('fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before
+{
+    font-family: 'icomoon';
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-cart, .icon-pencil, .icon-cart-2, .icon-file, .icon-file-2, .icon-fire, .icon-cog, .icon-cart-3, .icon-share, .icon-cart-4, .icon-upload, .icon-cloud-upload, .icon-info, .icon-signup, .icon-cogs, .icon-play, .icon-check-alt
+{
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+    .icon-cart:before
+    {
+        content: "\e000";
+    }
+
+    .icon-pencil:before
+    {
+        content: "\e001";
+    }
+
+    .icon-cart-2:before
+    {
+        content: "\e002";
+    }
+
+    .icon-file:before
+    {
+        content: "\e003";
+    }
+
+    .icon-file-2:before
+    {
+        content: "\e004";
+    }
+
+    .icon-fire:before
+    {
+        content: "\e005";
+    }
+
+    .icon-cog:before
+    {
+        content: "\e006";
+    }
+
+    .icon-cart-3:before
+    {
+        content: "\e007";
+    }
+
+    .icon-share:before
+    {
+        content: "\e008";
+    }
+
+    .icon-cart-4:before
+    {
+        content: "\e009";
+    }
+
+    .icon-upload:before
+    {
+        content: "\e00a";
+    }
+
+    .icon-cloud-upload:before
+    {
+        content: "\e00b";
+    }
+
+    .icon-info:before
+    {
+        content: "\e00c";
+    }
+
+    .icon-signup:before
+    {
+        content: "\e00d";
+    }
+
+    .icon-cogs:before
+    {
+        content: "\e00e";
+    }
+
+    .icon-play:before
+    {
+        content: "\e00f";
+    }
+
+    .icon-check-alt:before
+    {
+        content: "\e010";
+    }

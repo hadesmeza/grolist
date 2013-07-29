@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Make a grocery list- grolist</title>
+    @*   <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/themes/flick/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/ajaxlogin")
+    @Scripts.Render("~/bundles/GROLIAAS")
+</head>
+<body>
+    <div>
+        <div id="header">
+            <div>
+                <div id="branding">
+                    <span class="icon-file-2" style="color: #16a765"></span>
+                    <span style="font-weight: 700; color: #737373;">Grolist&nbsp;&nbsp;&nbsp;</span>
+                </div>
+            </div>
+            <div>
+                <div class="menuitem"><span class="icon-info" title="about"></span></div>
+                <div class="menuitem"><span class="icon-play" style="color: orange;" title="Itemize"></span></div>
+                <div class="menuitem">
+                    <span class="icon-pencil" style="color: #16a765;" title="Edit list"></span>
+                </div>
+            </div>
+
+        </div>
+        <div id="info-section" style="width: 100%; display: block; overflow: hidden;">
+        </div>
+    </div>
+    <div id="dialog" style="display: none;" title="<span class='icon-file-2' style='color:#16a765;'></span><span style='color:#737373;'>Grolist</span>">
+        Grocery List As A Service<br />
+        Provides a modern scalable solution to the common problem of building a grocery list
+            <br /><br />
+        <span class="icon-check-alt"></span>&nbsp; Select Items
+            <br />
+        <span class="icon-play"></span>&nbsp; Itemize list
+            <br />
+        <span class="icon-pencil"></span>&nbsp; Edit list
+            <br />
+        <span class="icon-share"></span>&nbsp; Email or text link to partner :)
+        <br /><br />
+
+        <a href="http://www.linkedin.com/pub/hades-meza-salazar/5/7a3/a3a" style="color: #427fed; text-decoration: underline;">Who's the Dev ?</a>
+
+
+    </div>
+    <div id="accordion">
+        @RenderBody()
+    </div>
+
+    <footer>
+    </footer>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
