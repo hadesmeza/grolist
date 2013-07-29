@@ -50,18 +50,7 @@ namespace GROLIAAS.Repository
 
         public static void Put(string usersessionid, string items)
         {
-            if (_storage.Count < _capacity)
-            {
-                if (_storage.TryAdd(usersessionid, items))
-                {
-                    lock (_locker)
-                    {
-                        _priority.AddLast(usersessionid);
-                        _capacity--;
-                    }
-                }
-            }
-            else
+            if (_capacity == 0)
             {
                 string usess;
                 //find least used
@@ -78,7 +67,21 @@ namespace GROLIAAS.Repository
 
                     lock (_locker)
                     {
+                        //remove LRU
+                        _priority.RemoveFirst();
                         _priority.AddLast(usersessionid);
+                    }
+                }
+            }
+            else
+            {
+
+                if (_storage.TryAdd(usersessionid, items))
+                {
+                    lock (_locker)
+                    {
+                        _priority.AddLast(usersessionid);
+                        _capacity--;
                     }
                 }
             }
