@@ -3,10 +3,18 @@ GROLIAAS.keys =
 {
     MASTERLIST: "mlist",
     PRINCIPAL: "this",
-    SESSIONID: "session"
-}
-;
+    SESSIONID: "session",
+};
 
+GROLIAAS.ContextUtils = {
+    isFirstVisit: function () {
+        var tracker = localStorage.getItem(this.MASTERLIST);
+        return !tracker;
+    },
+    sayWelcome:function() {
+        $(".menuitem .icon-info").trigger("click");
+    }
+};
 GROLIAAS.ListSetUpView = function (options) {
     options = options || { active: false };
     this.savedSession = this.savedSession ? $.parseJSON(this.savedSession) : $.parseJSON(localStorage.getItem(GROLIAAS.keys.PRINCIPAL));
@@ -76,6 +84,7 @@ GROLIAAS.ListSetUpView = function (options) {
                 self.buildAccordion(options.active);
                 localStorage.setItem(GROLIAAS.keys.MASTERLIST, JSON.stringify(self.data));
                 setTimeout(function () { addIndicator(); $(".ui-widget-content").on("click", addIndicator2); }, 0);
+                GROLIAAS.ContextUtils.sayWelcome();
 
             });
         } else {
