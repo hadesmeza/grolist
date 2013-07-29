@@ -13,7 +13,10 @@ namespace GROLIAAS.Repository
         {
             var parts = guid.ToString().Split('-')[0].ToCharArray();
             for (var i = 0; i < parts.Length; i++)
-                if (isNumber(parts[i])) parts[i] = GetRandomChar(parts[i]);
+                if (isNumber(parts[i]))
+                {
+                    parts[i] = GetRandomChar(parts[i]);
+                }
             return new string(parts);
         }
 
@@ -26,8 +29,7 @@ namespace GROLIAAS.Repository
 
         private static bool isNumber(int i)
         {
-            int res;
-            return int.TryParse(i.ToString(), out res);
+            return i >= 48 && i <= 57;
         }
     }
     
