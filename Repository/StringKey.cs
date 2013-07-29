@@ -8,7 +8,7 @@ namespace GROLIAAS.Repository
     public class StringKey
     {
         static readonly Random rand = new Random();
-        public static string New { get { return GetString(Guid.NewGuid()).ToLower(); } }
+        public static string New { get { return GetString(Guid.NewGuid()); } }
         private static string GetString(Guid guid)
         {
             var parts = guid.ToString().Split('-')[0].ToCharArray();
