@@ -21,7 +21,7 @@ GROLIAAS.define("GROLIAAS.ListDetailsView", {
             }
         }
         res.push("<h3><a  href='#'>&nbsp Grocery List  </a></h3><div>");
-        res.push(this.buildChecks(list));
+        res.push("<div  class='content-items'>" + this.buildChecks(list) +"</div>");
         res.push("</div>");
         return res.join("");
 
