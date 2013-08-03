@@ -101,7 +101,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2013 11:09:50</publishTime>
     </File>
     <File Include="bin/GROLIAAS.dll">
-      <publishTime>07/28/2013 21:13:39</publishTime>
+      <publishTime>08/01/2013 22:14:53</publishTime>
     </File>
     <File Include="bin/it/Microsoft.Data.Edm.resources.dll">
       <publishTime>07/20/2013 11:09:52</publishTime>
@@ -239,7 +239,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2013 17:59:37</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>07/28/2013 18:20:56</publishTime>
+      <publishTime>08/02/2013 17:41:25</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>07/21/2013 21:49:38</publishTime>
@@ -596,7 +596,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/21/2013 21:49:43</publishTime>
     </File>
     <File Include="Scripts/app/GROLIAAS.js">
-      <publishTime>07/28/2013 21:09:14</publishTime>
+      <publishTime>08/02/2013 18:15:20</publishTime>
+    </File>
+    <File Include="Scripts/app/ListDetailsView.js">
+      <publishTime>08/01/2013 18:45:32</publishTime>
+    </File>
+    <File Include="Scripts/app/ListSetUpView.js">
+      <publishTime>08/02/2013 18:29:36</publishTime>
     </File>
     <File Include="Scripts/jquery-1.8.2.js">
       <publishTime>07/21/2013 21:49:34</publishTime>
@@ -662,13 +668,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/21/2013 21:49:24</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/28/2013 12:25:21</publishTime>
+      <publishTime>08/01/2013 18:38:22</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>07/21/2013 21:49:24</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/28/2013 21:13:01</publishTime>
+      <publishTime>08/02/2013 17:44:29</publishTime>
     </File>
     <File Include="Views/Shared/_UserSettings.cshtml">
       <publishTime>07/21/2013 21:49:24</publishTime>

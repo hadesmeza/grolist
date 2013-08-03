@@ -27,7 +27,7 @@ namespace GROLIAAS.Models
 , Spinach
 , Squash
 , Zucchini
-, Tomatoes*
+, Tomatoes
 #
 Fresh fruits |
   Apples
@@ -38,7 +38,8 @@ Fresh fruits |
 , Grapefruit
 , Grapes
 , Kiwis
-, Lemons / Limes
+, Lemons
+, Limes
 , Melon
 , Oranges
 , Peaches
@@ -49,7 +50,7 @@ Fresh fruits |
 Refrigerated items | Bagels
 , Chip dip
 , English muffins
-, Eggs / Fake eggs
+, Eggs
 , Fruit juice
 , Hummus
 , Ready-bake breads
@@ -59,11 +60,13 @@ Refrigerated items | Bagels
 Frozen Breakfasts|
   Burritos
 , Fish sticks
-, Ice cream / Sorbet
+, Ice cream
 , Juice concentrate
-, Pizza / Pizza Rolls
+, Pizza
+, Pizza Rolls
 , Popsicles
-, Fries / Tater tots
+, Fries
+, Tater tots
 , TV dinners
 , Vegetables
 , Veggie burgers
@@ -72,8 +75,9 @@ Condiments / Sauces | BBQ sauce
 , Gravy
 , Honey
 , Hot sauce
-, Jam / Jelly / Preserves
-, Ketchup / Mustard
+, Jam / Jelly 
+, Ketchup
+, Mustard
 , Mayonnaise
 , Pasta sauce
 , Relish
@@ -84,7 +88,7 @@ Condiments / Sauces | BBQ sauce
 , Syrup
 , Worcestershire sauce
 #
-Dairy | Butter / Margarine
+Dairy | Butter, Margarine
 , Cottage cheese
 , Half & half
 , Milk
@@ -94,7 +98,6 @@ Dairy | Butter / Margarine
 , Cheese
 , Bleu cheese
 , Cheddar
-, Cottage cheese
 , Cream cheese
 , Feta
 , Goat cheese
@@ -105,7 +108,7 @@ Dairy | Butter / Margarine
 , Sandwich slices
 , Swiss
 #
-Meat | Bacon / Sausage
+Meat | Bacon, Sausage
 , Beef
 , Chicken
 , Ground beef / Turkey
@@ -125,12 +128,13 @@ Seafood | Catfish
 , Tuna
 #
 Beverages | Beer
-, Club soda / Tonic
+, Club soda
 , Champagne
 , Gin
 , Juice
 , Mixers
-, Red wine / White wine
+, Red wine
+, White wine
 , Rum
 , Saké
 , Soda pop
@@ -144,14 +148,16 @@ Baked goods | Bagels / Croissants
 , Donuts / Pastries 
 , Fresh bread
 , Sliced bread
-, Pie! Pie! Pie!
+, Pie! 
 , Pita bread
+, Cookie dough
 #
-Baking | Baking powder / Soda
+Baking | Baking powder, Soda
 , Bread crumbs
 , Cake / Brownie mix
 , Cake icing / Decorations
-, Chocolate chips / Cocoa
+, Chocolate chips
+, Cocoa
 , Flour
 , Shortening
 , Sugar
@@ -162,11 +168,12 @@ Snacks | Candy / Gum
 , Cookies
 , Crackers
 , Dried fruit
-, Granola bars / Mix
+, Granola bars
 , Nuts / Seeds
 , Oatmeal
 , Popcorn
-, Potato / Corn chips
+, Potato chips
+, Corn chips
 , Pretzels
 #
 Baby stuff | Baby food

@@ -11,208 +11,113 @@ GROLIAAS.ContextUtils = {
         var tracker = localStorage.getItem(this.MASTERLIST);
         return !tracker;
     },
-    sayWelcome:function() {
+    sayWelcome: function () {
         $(".menuitem .icon-info").trigger("click");
-    }
-};
-GROLIAAS.ListSetUpView = function (options) {
-    options = options || { active: false };
-    this.savedSession = this.savedSession ? $.parseJSON(this.savedSession) : $.parseJSON(localStorage.getItem(GROLIAAS.keys.PRINCIPAL));
-    this.data = $.parseJSON(localStorage.getItem(GROLIAAS.keys.MASTERLIST));
-    this.lazyGet = !this.data;
-    var self = this;
-
-    var addIndicator = function (el) {
-        var categories = $("#accordion").children();
-
-        for (var i = 1; i < categories.length; i += 2) {
-            var header = $(categories[i - 1]);
-            var content = $(categories[i]);
-            var cnt = content.find("input:checked").length;
-            if (cnt > 0) {
-                var text = header.text();
-                header.html("<a href='#'><span class='icon-cart' style='color:#16a765;'></span>&nbsp;" + text.trim() + " ( " + cnt + " ) </a>");
-            } else {
-                var text = header.text();
-                header.html("<a href='#'>" + text.trim() + "</a>");
+    },
+    formatPascalCase: function (val) {
+        var parts = val.split(/\s+/);
+        var res = [];
+        for (var i = 0 ; i < parts.length; i++) {
+            var word = parts[i].split(""),
+             ch = word[0].charCodeAt(0);
+            if (ch >= 97 && ch <= 122) {
+                word[0] = String.fromCharCode((ch - 32));
             }
+            res.push(word.join(""));
 
         }
-
-    };
-
-    var addIndicator2 = function (el) {
-        var cnt = $(this).find("input:checked").length;
-        if (cnt > 0) {
-            var header = $($("#accordion h3")[$("#accordion").accordion("option", "active")]);
-            var text = header.text().replace(/\(\s\d+\s\)/g, "");
-            header.html("<a href='#'><span class='icon-cart' style='color:#16a765;'></span>&nbsp;" + text.trim() + " ( " + cnt + " ) </a>");
-        } else {
-            var header = $($("#accordion h3")[$("#accordion").accordion("option", "active")]);
-            var text = header.text().replace(/\(\s\d+\s\)/g, "");
-            header.html("<a href='#'>" + text.trim() + "</a>");
+        return res.join(" ");
+    },
+    toObject: function (items) {
+        var res = {};
+        if (!items.length) return null;
+        for (var i = 0; i < items.length; i++) {
+            res[$(items[i]).val().trim()]= true;
         }
-    };
+        return res;
+    }
+},
 
-    this.realize = function () {
 
-        $(".menuitem").on("click", function () {
-            var el = $(this).find("span");
 
-            if (el.hasClass("icon-info")) {
-                $("#dialog").dialog({ modal: true, width: "auto;" });
-            } else if (el.hasClass("icon-play")) {
-                self.generateSharingLink();
+GROLIAAS.define = function (klass, obj) {
+
+    //create class template traversing namespaces
+    var source = klass;
+    var $ctor = obj.constructor || function () { };
+    var nsNavigator = window;
+    var ns = klass.split(".");
+    var TYPE = ns[ns.length - 1];
+
+    for (var i = 0; i < ns.length; i++) {
+        if (ns[i] === TYPE) break;
+        nsNavigator = nsNavigator[ns[i]];
+        if (!nsNavigator) throw "namespace :`" + ns[i] + "` was not found";
+    }
+
+    //add .ctor
+    nsNavigator[TYPE] = $ctor;
+    klass = nsNavigator[TYPE];
+    //extend if a class is passed
+    if (obj.extends) {
+        var template = GROLIAAS.Activator.createInstanceOf(obj.extends);
+        klass.prototype = template.instance;
+        klass.prototype.superClass = template.type;
+        klass.prototype.constructor = klass;
+    }
+    //add non static methods
+    for (var fn in obj) {
+        if (fn !== "statics" && (typeof obj[fn] === "object" || typeof obj[fn] === "function")) {
+            klass.prototype[fn] = obj[fn];
+        }
+    }
+
+    // add reflection help
+    klass.prototype.getTypeWithNS = function () { return source; };
+    klass.prototype.getType = function () { return TYPE.toUpperCase(); };
+    klass.prototype.getSuperType = function () { return obj.extends ? obj.extends : "undefined"; };
+    //check for overrides
+    if (obj.overrides) {
+        for (var fn in obj.overrides) {
+            if (klass.prototype[fn]) klass.prototype[fn] = obj[fn];
+        }
+    }
+
+    //add statics
+    if (obj.statics) {
+        for (var st in obj.statics)
+            klass[st] = obj.statics[st];
+    }
+    //add Type
+    klass.$type = klass.prototype.getType();
+    klass.$superType = obj.extends;
+};
+
+
+GROLIAAS.define("GROLIAAS.Activator", {
+    //todo 
+    //edge = require('edge');
+    constructor: function () { },
+    statics: {
+        //overload function( TYPE )
+        //overload function( TYPE , args )
+        createInstanceOf: function (TYPE, args) {
+            var ns = TYPE.split(".");
+            var nsNavigator = window;
+            var TYPE = ns[ns.length - 1];
+
+            for (var i = 0; i < ns.length; i++) {
+                if (ns[i] === TYPE) break;
+                nsNavigator = nsNavigator[ns[i]];
+                if (!nsNavigator) throw "namespace :`" + ns[i] + "` was not found";
             }
-            else if (el.hasClass("icon-pencil")) {
-                //save context
-                if (self.sessionId) {
-                    localStorage.setItem(GROLIAAS.keys.PRINCIPAL, JSON.stringify(self.savedSession));
-                    localStorage.setItem(GROLIAAS.keys.SESSIONID, self.sessionId);
-                }
-                location.href = location.origin;
-            }
-        });
+            if (typeof nsNavigator[TYPE] !== "function") throw "Unable to create an instance of `TYPE`" + TYPE;
 
-        if (self.lazyGet) {
-            $.ajax({
-                url: "/home/GetMasterList",
-                type: 'POST'
-            }).done(function(response) {
-
-                self.data = response;
-                self.buildAccordion(options.active);
-                localStorage.setItem(GROLIAAS.keys.MASTERLIST, JSON.stringify(self.data));
-                setTimeout(function () { addIndicator(); $(".ui-widget-content").on("click", addIndicator2); }, 0);
-                GROLIAAS.ContextUtils.sayWelcome();
-
-            });
-        } else {
-            self.buildAccordion(options.active);
-            setTimeout(function() {
-                addIndicator();
-                $(".ui-widget-content").on("click", addIndicator2);
-            }, 0);
-        }
-
-    };
-};
-
-//inherited memebers
-
-GROLIAAS.ListSetUpView.prototype.buildChecks = function (items) {
-    var left = ["<div style='float:left; width:50%;'>"];
-    var right = ["<div style='float:right; width:50%;'>"];
-    items.sort();
-    var slice = items.length / 2;
-    for (var i = 0; i < items.length; i++) {
-        var chk = this.savedSession[items[i].ItemDescription] ? " checked " : "";
-        var content = ['<input type="checkbox" name="item" value="', items[i].ItemDescription, '" ', chk, ' >', items[i].ItemDescription, "<br/>"].join("");
-        if (i < slice) {
-            left.push(content);
-        } else
-            right.push(content);
-
-    }
-    left.push("</div>");
-    right.push("</div>");
-    return left.join("") + right.join("");
-};
-
-GROLIAAS.ListSetUpView.prototype.buildAccordion = function (active) {
-    var markup = this.builAccord(this.data);
-    $('#accordion').html(markup);
-    $('#accordion').accordion({
-        icons: false,
-        autoHeight: false,
-        clearStyle: true,
-        collapsible: true
-    });
-};
-
-
-
-
-GROLIAAS.ListSetUpView.prototype.getSelections = function () {
-    var sections = $('#accordion > div input:checked ');
-    var map = {};
-    for (var i = 0; i < sections.length; i++) {
-        map[sections[i].value] = true;
-    }
-
-    return JSON.stringify(map);
-};
-
-
-GROLIAAS.ListSetUpView.prototype.generateSharingLink = function () {
-    if (this.sharedlink) {
-        $(".icon-signup").attr("title", "Link is already shareable");
-        return;
-    };
-    this.saveData(true);
-    var items = localStorage.getItem(GROLIAAS.keys.PRINCIPAL);
-    var session = localStorage.getItem(GROLIAAS.keys.SESSIONID);
-    $.ajax({
-        url: "/home/SaveSession",
-        type: 'POST',
-        data: { selections: items, session: session },
-    }).done(function (response) {
-        localStorage.setItem(GROLIAAS.keys.SESSIONID, response.sessionid);
-        location.href = location.href + response.sessionid;
-    });
-};
-
-
-GROLIAAS.ListSetUpView.prototype.saveData = function (silent) {
-    var serData = this.getSelections();
-    if (serData) {
-        localStorage.setItem(GROLIAAS.keys.PRINCIPAL, serData);
-        if (!silent) {
-            $("#info-section .icon-file-2").css("color", "orange");
-            setTimeout(function () { $("#info-section .icon-file-2").css("color", "#16a765"); }, 200);
+            return {
+                instance: new nsNavigator[TYPE](args),
+                type: nsNavigator[TYPE]
+            };
         }
     }
-};
 
-GROLIAAS.ListSetUpView.prototype.builAccord = function (store) {
-    var res = [];
-    this.savedSession = this.savedSession || {};
-
-    var settings = this.sharedlink ? "" : "</span><span style='font-weigth:700; font-size:13px; color:#427fed; float: right; padding-left:3px;'>Settings</span><span class='icon-cog' style='float:right;padding-right:0;'>";
-    for (var i = 0; i < store.length; i++) {
-        res.push("<h3><a  'href='#'>&nbsp" + store[i].SectionName + "</a></h3>" + "<div >" + this.buildChecks(store[i].Items) + settings+"</div>");
-    }
-
-    return res.join("");
-
-};
-
-
-GROLIAAS.ListDetailsView = function (context) {
-    this.sharedlink = true;
-    this.sessionId = context.sessionId;
-    this.savedSession = context.sharedSession;
-    GROLIAAS.ListSetUpView.apply(this, [{ active: true }]);
-};
-
-GROLIAAS.ListDetailsView.prototype = new GROLIAAS.ListSetUpView();
-GROLIAAS.ListDetailsView.prototype.constructor = GROLIAAS.ListDetailsView;
-
-GROLIAAS.ListDetailsView.prototype.builAccord = function (store) {
-    var res = [];
-    this.savedSession = this.savedSession || {};
-    var list = [];
-
-    for (var i = 0; i < store.length; i++) {
-        for (var j = 0; j < store[i].Items.length; j++) {
-            if (this.savedSession[store[i].Items[j].ItemDescription]) {
-                list.push(store[i].Items[j]);
-            }
-        }
-    }
-    res.push("<h3><a  href='#'>&nbsp Grocery List  </a></h3><div>");
-    res.push(this.buildChecks(list));
-    res.push("</div>");
-    return res.join("");
-
-};
+});
