@@ -84,4 +84,3 @@ C:\Users\Ing.hades\Documents\Visual Studio 2012\Projects\GROLIAAS\bin\zh-Hans\Sy
 C:\Users\Ing.hades\Documents\Visual Studio 2012\Projects\GROLIAAS\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Ing.hades\Documents\Visual Studio 2012\Projects\GROLIAAS\obj\Debug\GROLIAAS.dll
 C:\Users\Ing.hades\Documents\Visual Studio 2012\Projects\GROLIAAS\obj\Debug\GROLIAAS.pdb
-C:\Users\Ing.hades\Documents\Visual Studio 2012\Projects\GROLIAAS\obj\Debug\GROLIAAS.csprojResolveAssemblyReference.cache

@@ -340,6 +340,7 @@
     <Content Include="Content\fonts\icomoon.woff" />
     <None Include="Properties\PublishProfiles\grolist.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\icon.PNG" />
     <Content Include="Scripts\app\GROLIAAS.js" />
     <Content Include="Scripts\app\ListDetailsView.js" />
     <Content Include="Scripts\app\ListSetUpView.js" />

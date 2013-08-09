@@ -101,7 +101,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2013 11:09:50</publishTime>
     </File>
     <File Include="bin/GROLIAAS.dll">
-      <publishTime>08/01/2013 22:14:53</publishTime>
+      <publishTime>08/04/2013 18:52:20</publishTime>
     </File>
     <File Include="bin/it/Microsoft.Data.Edm.resources.dll">
       <publishTime>07/20/2013 11:09:52</publishTime>
@@ -224,22 +224,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2013 11:09:50</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.dev.svg">
-      <publishTime>07/26/2013 17:59:37</publishTime>
+      <publishTime>08/08/2013 19:18:34</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.eot">
-      <publishTime>07/26/2013 17:59:37</publishTime>
+      <publishTime>08/08/2013 19:18:34</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.svg">
-      <publishTime>07/26/2013 17:59:37</publishTime>
+      <publishTime>08/08/2013 19:18:34</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.ttf">
-      <publishTime>07/26/2013 17:59:37</publishTime>
+      <publishTime>08/08/2013 19:18:34</publishTime>
     </File>
     <File Include="Content/fonts/icomoon.woff">
-      <publishTime>07/26/2013 17:59:37</publishTime>
+      <publishTime>08/08/2013 19:18:34</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>08/02/2013 17:41:25</publishTime>
+      <publishTime>08/08/2013 21:24:08</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>07/21/2013 21:49:38</publishTime>
@@ -548,7 +548,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2013 19:19:39</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>07/21/2013 21:49:24</publishTime>
+      <publishTime>08/02/2013 22:33:26</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>07/21/2013 21:49:24</publishTime>
@@ -561,6 +561,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Images/heroAccent.png">
       <publishTime>07/21/2013 21:49:24</publishTime>
+    </File>
+    <File Include="Images/icon.PNG">
+      <publishTime>08/04/2013 18:55:27</publishTime>
     </File>
     <File Include="Images/orderedList0.png">
       <publishTime>07/21/2013 21:49:24</publishTime>
@@ -596,13 +599,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/21/2013 21:49:43</publishTime>
     </File>
     <File Include="Scripts/app/GROLIAAS.js">
-      <publishTime>08/02/2013 18:15:20</publishTime>
+      <publishTime>08/03/2013 11:22:55</publishTime>
     </File>
     <File Include="Scripts/app/ListDetailsView.js">
-      <publishTime>08/01/2013 18:45:32</publishTime>
+      <publishTime>08/07/2013 23:25:04</publishTime>
     </File>
     <File Include="Scripts/app/ListSetUpView.js">
-      <publishTime>08/02/2013 18:29:36</publishTime>
+      <publishTime>08/08/2013 21:52:42</publishTime>
     </File>
     <File Include="Scripts/jquery-1.8.2.js">
       <publishTime>07/21/2013 21:49:34</publishTime>
@@ -674,7 +677,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/21/2013 21:49:24</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/02/2013 17:44:29</publishTime>
+      <publishTime>08/08/2013 21:58:47</publishTime>
     </File>
     <File Include="Views/Shared/_UserSettings.cshtml">
       <publishTime>07/21/2013 21:49:24</publishTime>

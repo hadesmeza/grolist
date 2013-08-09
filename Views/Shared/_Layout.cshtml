@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Make a grocery list- grolist</title>
-    @*   <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
-    <meta name="viewport" content="width=device-width" />
+    <title>Groclick&#x2713;</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" />
+
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="~/Images/icon.PNG" />
+
+    <link rel="icon"
+        type="text/css" href="~/Images/icon.PNG" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/themes/flick/css")
@@ -16,47 +25,52 @@
 <body>
     <div>
         <div id="header">
-            <div>
-                <div id="branding">
-                    <span class="icon-file-2" style="color: #16a765"></span>
-                    <span style="font-weight: 700; color: #737373;">Grolist&nbsp;&nbsp;&nbsp;</span>
+            <a href="@Url.Action("index", "Home")">
+                <div class="gl-brand">
+                    <span class="icon-file-2"></span><span style="font-size: 15px;">&#x2713;</span>
                 </div>
-            </div>
+            </a>
             <div>
-                <div class="menuitem"><span class="icon-info" title="about"></span></div>
-                <div class="menuitem"><span class="icon-play" style="color: orange;" title="Itemize"></span></div>
                 <div class="menuitem">
-                    <span class="icon-pencil" style="color: #16a765;" title="Edit list"></span>
+                    <div><span class="icon-info" title="about"></span></div>
                 </div>
+                <div class="menuitem">
+                    <div><span class="icon-hammer" style="color: orange;" title="Itemize"></span></div>
+                </div>
+                <div class="menuitem">
+                    <div>
+                        <span class="icon-pencil-2" style="color: green;" title="Edit list"></span>
+                    </div>
+                </div>
+
                 <div class="menuitem"></div>
             </div>
 
         </div>
-        <div id="info-section" style="width: 100%; display: block; overflow: hidden;">
-        </div>
     </div>
-    <div id="dialog" style="display: none;" title="<span class='icon-file-2' style='color:#16a765;'></span><span style='color:#737373;'>Grolist</span>">
-        Grocery List As A Service<br />
+    <div id="dialog" style="display: none;" title="<span class='icon-file-2' style='color:#16a765;'></span><span style='color:#737373;'>Groclick</span>">
+        Groclick<br />
         Provides a modern scalable solution to the common problem of building a grocery list
-        <br /><br />
+        <br />
+        <br />
         <span class="icon-check-alt"></span>&nbsp; Select Items
         <br />
-        <span class="icon-play"></span>&nbsp; Itemize list
+        <span class="icon-hammer"></span>&nbsp; Build list
         <br />
-        <span class="icon-pencil"></span>&nbsp; Edit list
+        <span class="icon-pencil-2"></span>&nbsp; Edit list
         <br />
         <span class="icon-share"></span>&nbsp; Email or text link to partner :)
-        <br /><br />
+        <br />
+        <br />
 
         <a href="http://www.linkedin.com/pub/hades-meza-salazar/5/7a3/a3a" style="color: #269ccb; font-weight: 700; font-size: 15px;">Who's the Dev ?</a>
-        <a  style="cursor:pointer; color: #269ccb; font-size: 15px; float: right; font-weight: 700 " onclick='$(".ui-icon-closethick").trigger("click");'>Got it!</a>
+        <a style="cursor: pointer; color: #269ccb; font-size: 15px; float: right; font-weight: 700" onclick='$(".ui-icon-closethick").trigger("click");'>Got it!</a>
 
     </div>
-    <div id="a-settings-dialog" style="display: none;" title="</span>New Item</span>" >
-        <input type="text"style="width:100%; font-size: 13px;" maxlength="15" class="check-btn"name="" value="" />
+    <div id="a-settings-dialog" style="display: none;" title="</span>New Item</span>">
+        <input type="text" style="width: 100%; font-size: 13px;" maxlength="50" class="check-btn" name="" value="" />
     </div>
-     <div id="r-settings-dialog" style="display: none;" title="</span>Remove Items</span>" >
-
+    <div id="r-settings-dialog" style="display: none;" title="</span>Remove Items</span>">
     </div>
     <div id="accordion">
         @RenderBody()

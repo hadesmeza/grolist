@@ -12,7 +12,6 @@ body
 
 html
 {
-    height: 90%;
     background: #e3e3e0;
 }
 
@@ -66,14 +65,13 @@ a
     {
         background-color: white;
         border-color: #F4F4F4;
-        color: #737373;
-        line-height: 16pt;
         height: auto;
         padding: 5px;
         text-shadow: 0 1px #000000;
         text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-        font-size: 11px;
-        font-weight: bold;
+        color: #737373;
+        line-height: 16pt;
+        font-size: 13px;
     }
 
         #accordion .ui-accordion-content > *
@@ -94,7 +92,7 @@ a
         border: 0;
     }
 
-    #accordion .icon-cart
+    #accordion .icon-basket
     {
         color: #16a765;
     }
@@ -115,12 +113,10 @@ a
 
     #accordion .ui-state-active a, .ui-state-active a:link, #accordion .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited
     {
-        color: #737373;
+        color: #484848;
         line-height: 16pt;
-        text-shadow: 0 1px #000000;
-        text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-        font-size: 13px;
-        font-weight: bold;
+        font-size: 16px;
+        font-weight: 600;
     }
 
     #accordion .ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link
@@ -150,7 +146,7 @@ a
     height: 50px;
     font-size: 25px;
     width: 100%;
-    background: #F1F1F1;
+    background: #F5F5F5;
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -158,21 +154,15 @@ a
     border-bottom: 1px solid #999;
 }
 
-#branding
+
+.gl-brand
 {
     float: left;
-    margin-top: 15px;
-    margin-left: 5px;
-    border-right: 1px solid #ddd;
-    text-shadow: 0 1px #000000;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.menuitem a
-{
-    color: #269ccb;
+    background: #16a765;
+    padding: 10px 5px 5px 10px;
+    width: 49px;
+    color: white;
+    height: 50px;
 }
 
 .menuitem
@@ -181,14 +171,47 @@ a
     cursor: pointer;
     margin-top: 10px;
     float: right;
-    margin-right: 5px;
+    margin-right: 10px;
     margin-left: 5px;
 }
 
-    .menuitem :hover
+    .menuitem :active
     {
-        color: #C0D600;
+        font-size: 30px;
     }
+
+    .menuitem .btn-label
+    {
+        text-shadow: 0 1px #000000;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+        color: #737373;
+        font-size: 13px;
+    }
+
+.footer
+{
+    text-align: center;
+    padding: 10px;
+    text-shadow: 0 1px #000000;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    color: #737373;
+    font-size: 13px;
+    cursor: pointer;
+    font-style: italic;
+    width: 100%
+}
+
+hr.style-one
+{
+    margin-top: 1px;
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+    background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+    background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+    background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+}
 /*modal*/
 
 #dialog.ui-dialog-content
@@ -204,7 +227,7 @@ a
     border-radius: 2px;
     margin-bottom: 2px;
     cursor: pointer;
-    background: #F1F1F1;
+    background: #F5F5F5;
     margin-right: 5px;
 }
 
@@ -267,7 +290,6 @@ a
     font-weight: bold;
 }
 
-
 @font-face
 {
     font-family: 'icomoon';
@@ -296,7 +318,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-cart, .icon-pencil, .icon-cart-2, .icon-file, .icon-file-2, .icon-fire, .icon-cog, .icon-cart-3, .icon-share, .icon-cart-4, .icon-upload, .icon-cloud-upload, .icon-info, .icon-signup, .icon-cogs, .icon-play, .icon-check-alt
+.icon-cart, .icon-pencil, .icon-cart-2, .icon-file, .icon-file-2, .icon-fire, .icon-cog, .icon-cart-3, .icon-share, .icon-cart-4, .icon-upload, .icon-cloud-upload, .icon-info, .icon-signup, .icon-cogs, .icon-play, .icon-check-alt, .icon-basket, .icon-hammer, .icon-pencil-2, .icon-download, .icon-eye-blocked
 {
     font-family: 'icomoon';
     speak: none;
@@ -391,4 +413,29 @@ you can use the generic selector below, but it's slower:
     .icon-check-alt:before
     {
         content: "\e010";
+    }
+
+    .icon-basket:before
+    {
+        content: "\e011";
+    }
+
+    .icon-hammer:before
+    {
+        content: "\e012";
+    }
+
+    .icon-pencil-2:before
+    {
+        content: "\e013";
+    }
+
+    .icon-download:before
+    {
+        content: "\e014";
+    }
+
+    .icon-eye-blocked:before
+    {
+        content: "\e015";
     }

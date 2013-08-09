@@ -7,19 +7,19 @@ GROLIAAS.keys =
 };
 
 GROLIAAS.ContextUtils = {
-    isFirstVisit: function () {
+    isFirstVisit: function() {
         var tracker = localStorage.getItem(this.MASTERLIST);
         return !tracker;
     },
-    sayWelcome: function () {
+    sayWelcome: function() {
         $(".menuitem .icon-info").trigger("click");
     },
-    formatPascalCase: function (val) {
+    formatPascalCase: function(val) {
         var parts = val.split(/\s+/);
         var res = [];
-        for (var i = 0 ; i < parts.length; i++) {
+        for (var i = 0; i < parts.length; i++) {
             var word = parts[i].split(""),
-             ch = word[0].charCodeAt(0);
+                ch = word[0].charCodeAt(0);
             if (ch >= 97 && ch <= 122) {
                 word[0] = String.fromCharCode((ch - 32));
             }
@@ -28,11 +28,11 @@ GROLIAAS.ContextUtils = {
         }
         return res.join(" ");
     },
-    toObject: function (items) {
+    toObject: function(items) {
         var res = {};
         if (!items.length) return null;
         for (var i = 0; i < items.length; i++) {
-            res[$(items[i]).val().trim()]= true;
+            res[$(items[i]).val().trim()] = true;
         }
         return res;
     }
@@ -59,8 +59,8 @@ GROLIAAS.define = function (klass, obj) {
     nsNavigator[TYPE] = $ctor;
     klass = nsNavigator[TYPE];
     //extend if a class is passed
-    if (obj.extends) {
-        var template = GROLIAAS.Activator.createInstanceOf(obj.extends);
+    if (obj.inherits) {
+        var template = GROLIAAS.Activator.createInstanceOf(obj.inherits);
         klass.prototype = template.instance;
         klass.prototype.superClass = template.type;
         klass.prototype.constructor = klass;
@@ -75,7 +75,7 @@ GROLIAAS.define = function (klass, obj) {
     // add reflection help
     klass.prototype.getTypeWithNS = function () { return source; };
     klass.prototype.getType = function () { return TYPE.toUpperCase(); };
-    klass.prototype.getSuperType = function () { return obj.extends ? obj.extends : "undefined"; };
+    klass.prototype.getSuperType = function () { return obj.inherits ? obj.inherits : "undefined"; };
     //check for overrides
     if (obj.overrides) {
         for (var fn in obj.overrides) {
@@ -90,7 +90,7 @@ GROLIAAS.define = function (klass, obj) {
     }
     //add Type
     klass.$type = klass.prototype.getType();
-    klass.$superType = obj.extends;
+    klass.$superType = obj.inherits;
 };
 
 
