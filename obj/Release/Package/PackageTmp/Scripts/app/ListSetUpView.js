@@ -98,13 +98,15 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
             }
         });
         $(document).on("click", ".footer", function () { self.showAllCategories.call(self); });
-        $(".icon-eye-blocked").on("click", function (event) {
+        $(document).on("click", ".icon-eye-blocked", function (event) {
             event.stopPropagation(); // this is
             event.preventDefault(); // the magic
-            var section = $(this).parent().parent();
-            var sectionName = section.attr("@section").trim();
+            var header = $(this).parent().parent();
+            var contentItems = header.next();
+            var sectionName = header.attr("@section").trim();
             self.store.hiddenSections[sectionName] = true;
-            section.remove();
+            header.remove();
+            contentItems.remove();
             self.saveData();
             self.renderFooter();
         });
@@ -142,7 +144,7 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
                 location.href = location.origin;
             }
         });
-        $(".check-btn.content-settings").on("click", function () {
+        $(document).on("click", ".check-btn.content-settings", function () {
             var elem = $(this);
             var action = elem.attr("action");
             var section = elem.attr("section");
@@ -292,12 +294,12 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
 
                                 }
                                 if (isNew) {
-                                    self.saveSession();
                                     self.store.items[i].Items.push({ ItemDescription: newitem, IsChecked: false });
                                     markup = self.buildChecks(self.store.items[i].Items);
                                     $(opts.scope).parent().parent().find(".item-columns").html(markup);
                                     self.refreshAccordion();
                                     self.addIndicator();
+                                    self.saveSession();
                                 }
                                 break;
                             }

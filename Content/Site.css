@@ -101,6 +101,8 @@ a
     {
         border-top: 3px solid #B0281A;
         border-radius: 0;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
         border-left-color: #F4F4F4;
         border-right-color: #F4F4F4;
         border-bottom-color: #C0C0C0;
