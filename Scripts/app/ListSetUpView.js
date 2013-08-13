@@ -2,7 +2,7 @@
     constructor: function () {
         this.items = $.parseJSON(localStorage.getItem(GROLIAAS.keys.MASTERLIST));
         this.isEmpty = !this.items;
-        this.hiddenSections = {};// try get from storage
+        this.hiddenSections = {}; // try get from storage
     },
     save: function () {
         //check if anything was hidden
@@ -19,14 +19,28 @@
     index: function () {
         var index = {};
         for (var i = 0; i < this.items.length; i++) {
-            index[this.items[i].SectionName.trim()] = this.items[i].Items;
+            index[this.items[i].SectionName.trim()] = this.items[i];
         }
         this.index = function () {
             return index;
         };
         return index;
     },
+    updateCategoryName: function (sectionName, newName) {
+        //update index
+        var section = this.getSectionByName(sectionName);
+        delete this.index()[sectionName];
+        section.SectionName = newName;
+        this.index()[newName] = section;
+
+    },
+    sectionExists: function (sectionName) {
+        return !!this.index()[sectionName];
+    },
     getSectionItemsByName: function (sectionName) {
+        return this.index()[sectionName].Items;
+    },
+    getSectionByName: function (sectionName) {
         return this.index()[sectionName];
     },
     restoreHiddenSections: function () {
@@ -117,18 +131,6 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
             }
         });
         $(document).on("click", ".footer", function () { self.showAllCategories.call(self); });
-        $(document).on("click", ".icon-eye-blocked", function (event) {
-            event.stopPropagation(); // this is
-            event.preventDefault(); // the magic
-            var header = $(this).closest("h3");
-            var contentItems = header.next();
-            var sectionName = header.attr("@section").trim();
-            self.store.hiddenSections[sectionName] = true;
-            header.remove();
-            contentItems.remove();
-            self.saveData();
-            self.renderFooter();
-        });
         $(".menuitem").on("click", function () {
             var el = $(this).find("span");
 
@@ -145,7 +147,9 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
                 location.href = location.origin;
             }
         });
-        $(document).on("click", ".check-btn.content-settings", function () {
+        $(document).on("click", ".check-btn.content-settings", function (event) {
+            event.stopImmediatePropagation(); // this is
+            event.preventDefault(); // the magic
             var elem = $(this);
             var action = elem.attr("action");
             var section = elem.attr("section");
@@ -180,6 +184,8 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
         }
     },
 
+    // <view rendering>
+
     addIndicator: function (el) {
         var categories = $("#accordion").children();
         var header;
@@ -192,15 +198,16 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
 
     },
 
-    getHeaderContent: function (cnt, headerel) {
+    getHeaderContent: function (cnt, headerel, replaceOps) {
         var header = headerel,
-            text;
+            text,
+            replOps = replaceOps || { regex: /\+\d+/g, val: "" };
         if (cnt > 0) {
-            text = header.text().replace(/\+\d+/g, "");
+            text = header.text().replace(replOps.regex, replOps.val);
             return "<a href='#'><span class='icon-basket'></span>&nbsp;" + text.trim() + "<span style='color:#269ccb;'> +" + cnt + "</span></a>";
         } else {
-            text = header.text().replace(/\+\d+/g, "");
-            return "<a href='#'>" + text.trim() + "<span class='icon-eye-blocked' style='float:right; font-size:20px;'></span></a>";
+            text = header.text().replace(replOps.regex, replOps.val);
+            return "<a href='#'>" + text.trim() + "<div class='check-btn content-settings icon-redo' action='hideCategory' style=' background:white; border-color:#737373; color:#737373;float:right; font-size:15px; font-weight:normal;'></div></a>";
         }
     },
 
@@ -233,6 +240,21 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
         return "<div class='item-columns'>" + left.join("") + right.join("") + "</div>";
     },
 
+    builAccord: function (store) {
+        var res = [];
+        this.session.savedSession = this.session.savedSession || {};
+        var settings;
+
+        for (var i = 0; i < store.length; i++) {
+            if (store[i].isHidden) continue;
+            settings = this.sharedlink ? "" : "<br/><div style='width:100%; overflow:hidden;display:block;'><div class='check-btn content-settings' action='add' section='" + store[i].SectionName + "'> + </div><div class='check-btn content-settings' action='remove' section='" + store[i].SectionName + "'> - </div><div class='check-btn content-settings icon-pencil-2' style='font-size:12px; padding-top:10px; padding-bottom:8px; font-weight:normal;' action='editCategoryTitle' section='" + store[i].SectionName + "'></div></div>"; //<div class='check-btn content-settings' action='remove' > - </div>
+            res.push("<h3 @section='" + store[i].SectionName + "'><a  'href='#'>&nbsp" + store[i].SectionName + "</a></h3>" + "<div  class='content-items'>" + this.buildChecks(store[i].Items) + settings + "</div>");
+        }
+
+        return res.join("");
+
+    },
+
     refreshAccordion: function () {
         $('#accordion').accordion("refresh");
     },
@@ -260,6 +282,10 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
         }
     },
 
+    // </view rendering> 
+
+    //<controller actions>
+
     addItem: function (options) {
         var self = this;
         var section = options.section.trim();
@@ -267,20 +293,25 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
         var currStore = self.store.getSectionItemsByName(section);
         $("#a-settings-dialog").dialog({
             modal: true,
+            title: "New Item",
             buttons: [{
                 text: "ok",
+                close: function () { $(".a-settings-error").hide(); },
                 click: function () {
                     var newitem = $(this).find("input").val().trim();
-                    //clear old val
-                    $(this).find("input").val("");
                     if (newitem) {
                         newitem = GROLIAAS.ContextUtils.formatPascalCase(newitem);
-                        if (!self.store.any(currStore, function (item) { return newitem === item.ItemDescription.trim();})) {
+                        if (!self.store.any(currStore, function (item) { return newitem === item.ItemDescription.trim(); })) {
+                            //clear old val
+                            $(this).find("input").val("");
                             currStore.push({ ItemDescription: newitem, IsChecked: false });
                             $(opts.scope).parent().parent().find(".item-columns").html(self.buildChecks(currStore));
                             self.refreshAccordion();
                             self.addIndicator();
                             self.saveSession();
+                        } else {
+                            $(".a-settings-error").show();
+                            return;
                         }
 
 
@@ -326,6 +357,18 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
             }]
         });
     },
+    
+    hideCategoryItem: function (options) {
+        var self = this;
+        
+        var parent = $(options.scope).closest('div');
+        var head = parent.closest('h3');
+        var sectionName = head.attr("@section").trim();
+        parent.add(head).fadeOut('slow', function () { $(this).remove(); });
+        self.store.hiddenSections[sectionName] = true;
+        self.saveData();
+        self.renderFooter();
+    },
 
     generateSharingLink: function () {
         if (this.sharedlink) {
@@ -360,21 +403,6 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
         this.store.save();
     },
 
-    builAccord: function (store) {
-        var res = [];
-        this.session.savedSession = this.session.savedSession || {};
-        var settings;
-
-        for (var i = 0; i < store.length; i++) {
-            if (store[i].isHidden) continue;
-            settings = this.sharedlink ? "" : "<br/><div style='width:100%; overflow:hidden;display:block;'><div class='check-btn content-settings' action='add' section='" + store[i].SectionName + "'> + </div><div class='check-btn content-settings' action='remove' section='" + store[i].SectionName + "'> - </div></div>"; //<div class='check-btn content-settings' action='remove' > - </div>
-            res.push("<h3 @section='" + store[i].SectionName + "'><a  'href='#'>&nbsp" + store[i].SectionName + "</a></h3>" + "<div  class='content-items'>" + this.buildChecks(store[i].Items) + settings + "</div>");
-        }
-
-        return res.join("");
-
-    },
-
     showAllCategories: function () {
 
         this.store.restoreHiddenSections();
@@ -385,11 +413,44 @@ GROLIAAS.define("GROLIAAS.ListSetUpView", {
     addCategory: function () {
     },
 
-    editCategoryTitle: function () {
-        var newTitle = $(this).val();
-        var header = $($("#accordion h3")[$("#accordion").accordion("option", "active")]);
-        var text = header.text().replace(/\w+\s+\w+/g, newTitle);
+    editCategoryTitleItem: function (options) {
+        var self = this,
+            section = options.section.trim(),
+            ops = options,
+        header = $($("#accordion h3")[$("#accordion").accordion("option", "active")]);
+
+        $("#a-settings-dialog").dialog({
+            modal: true,
+            title: "Edit Category Title",
+            buttons: [{
+                text: "ok",
+                close: function () { $(".a-settings-error").hide(); },
+                open: function (event, ui) {
+                    $("#a-settings-dialog input").val(header.text().replace(/\+\d+/g, ""));
+                },
+                click: function () {
+                    var newitem = $(this).find("input").val().trim();
+                    if (newitem) {
+                        if (self.store.sectionExists(newitem)) {
+                            $(".a-settings-error").show();
+                            return;
+                        } else {
+                            newitem = GROLIAAS.ContextUtils.formatPascalCase(newitem);
+                            $(this).find("input").val("");
+                            header.html(self.getHeaderContent($(ops.scope).closest("h3").find("input:checked").length, header, { regex: /\w+\s+\w+/g, val: newitem }));
+                            self.store.updateCategoryName(section, newitem);
+                            self.saveSession();
+                        }
+                    }
+
+                    $(this).dialog("close");
+                }
+            }]
+        });
+
     }
+
+    //</controller actions>    
 });
 
 
