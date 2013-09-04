@@ -51,100 +51,119 @@ a
     margin-top: 60px;
 }
 
-    /*#accordion .ui-state-active, .ui-widget-content .ui-state-active,
+.gl-desktop #accordion
+{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+
+/*#accordion .ui-state-active, .ui-widget-content .ui-state-active,
  #accordion .ui-widget-header .ui-state-active {
     border-color: #e3e3e0;
 }*/
 
-    #accordion .ui-widget-content
-    {
-        background: white;
-    }
+#accordion .ui-widget-content
+{
+    background: white;
+}
 
-    #accordion .ui-accordion-content, #r-settings-dialog, .a-settings-error
-    {
-        background-color: white;
-        border-color: #F4F4F4;
-        height: auto;
-        padding: 5px;
-        text-shadow: 0 1px #000000;
-        text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-        color: #737373;
-        line-height: 16pt;
-        font-size: 13px;
-    }
-    .a-settings-error {
-        color: orange;
-        font-weight: bold;
-    }
+#accordion .ui-accordion-content-active
+{
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+}
 
-        #accordion .ui-accordion-content > *
-        {
-            margin: 0;
-            padding: 10px;
-        }
+#accordion .ui-accordion-content, #r-settings-dialog, .a-settings-error
+{
+    background-color: white;
+    border-color: #F4F4F4;
+    height: auto;
+    padding: 5px;
+    text-shadow: 0 1px #000000;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    color: #737373;
+    line-height: 16pt;
+    font-size: 13px;
+}
 
-    #accordion .ui-accordion-header.ui-state-hover
-    {
-        background-color: white;
-        border-color: #F4F4F4;
-    }
+.a-settings-error
+{
+    color: orange;
+    font-weight: bold;
+}
+
+#accordion .ui-accordion-content > *
+{
+    margin: 0;
+    padding: 10px;
+}
+
+#accordion .ui-accordion-header.ui-state-hover
+{
+    background-color: white;
+    border-color: #F4F4F4;
+}
 
 
-    #accordion .ui-accordion-header.ui-state-default.ui-corner-all
-    {
-        border: 0;
-    }
+#accordion .ui-accordion-header.ui-state-default.ui-corner-all
+{
+    border: 0;
+    -moz-box-shadow: 0 0 1px #888;
+    -webkit-box-shadow: 0 0 1px #888;
+    box-shadow: 0 0 1px #888;
+}
 
-    #accordion .icon-basket
-    {
-        color: #16a765;
-    }
+#accordion .icon-basket
+{
+    color: #16a765;
+}
 
-    #accordion .ui-accordion-header.ui-state-active
-    {
-        border-top: 3px solid #B0281A;
-        border-radius: 0;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border-left-color: #F4F4F4;
-        border-right-color: #F4F4F4;
-        border-bottom-color: #C0C0C0;
-    }
+#accordion .ui-accordion-header.ui-state-active
+{
+    border-top: 3px solid #4B8DF8;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-left-color: #F4F4F4;
+    border-right-color: #F4F4F4;
+    border-bottom-color: #C0C0C0;
+}
 
-    #accordion .ui-accordion-content.ui-accordion-content-active
-    {
-        border-radius: 0;
-    }
+#accordion .ui-accordion-content.ui-accordion-content-active
+{
+    border-radius: 0;
+}
 
-    #accordion .ui-state-active a, .ui-state-active a:link, #accordion .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited
-    {
-        color: #484848;
-        line-height: 16pt;
-        font-size: 16px;
-        font-weight: 600;
-    }
+#accordion .ui-state-active a, .ui-state-active a:link, #accordion .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited
+{
+    color: #777;
+    line-height: 16pt;
+    font-size: 18px;
 
-    #accordion .ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link
-    {
-        color: black;
-    }
+}
 
-    #accordion .ui-state-hover .icon-cart
-    {
-        color: #607890;
-    }
+#accordion .ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link
+{
+    color: black;
+}
 
-    #accordion .ui-accordion-header
-    {
-        margin-top: 10px;
-    }
+#accordion .ui-state-hover .icon-cart
+{
+    color: #607890;
+}
 
-    #accordion .ui-accordion-header
-    {
-        background-color: white;
-        background-image: none;
-    }
+#accordion .ui-accordion-header
+{
+    margin-top: 10px;
+}
+
+#accordion .ui-accordion-header
+{
+    background-color: white;
+    background-image: none;
+}
 
 
 #header
@@ -164,26 +183,28 @@ a
 .gl-brand
 {
     float: left;
-    background: #16a765;
-    padding: 10px 5px 5px 10px;
-    width: 49px;
+    padding: 7px 5px 5px 10px;
+    width: 55px;
     color: white;
-    height: 50px;
+    height: 49px;
+    border-radius: 1px;
+    /*border: 1px solid #3f980e;*/
 }
 
 .menuitem
 {
-    color: #269ccb;
+    color: #737373;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 15px;
     float: right;
     margin-right: 10px;
     margin-left: 5px;
+    font-size: 20px;
 }
 
-    .menuitem :active
+    .menuitem :hover, .menuitem :active
     {
-        font-size: 30px;
+        color: black;
     }
 
     .menuitem .btn-label
@@ -204,7 +225,7 @@ a
     font-size: 13px;
     cursor: pointer;
     font-style: italic;
-    width: 100%
+    width: 100%;
 }
 
 hr.style-one
@@ -230,19 +251,38 @@ hr.style-one
 {
     border: 1px solid #eee;
     padding: 5px;
-    border-radius: 2px;
+    border-radius: 10px;
     margin-bottom: 2px;
     cursor: pointer;
     background: #F5F5F5;
     margin-right: 5px;
+    -webkit-transition: border-color 1s ease;
+    -moz-transition: border-color 1s ease;
+    -o-transition: border-color 1s ease;
+    -ms-transition: border-color 1s ease;
+    transition: background 1s ease;
 }
 
 
     .check-btn.check-down
     {
-        border-color: #D2D2D2;
-        border-top: 2px solid #368200;
-        background: white;
+        color: white;
+        background: #67ae3f;
+        /* background: -webkit-gradient(linear,left top,left bottom,from(#77bb4e),to(#57a02f));*/
+        border: 1px solid #3f980e;
+    }
+
+    .check-btn .status
+    {
+        display: none;
+    }
+
+    .check-btn.check-down .status
+    {
+        display: inline-block;
+        color: black;
+        margin-right: 2px;
+        opacity: 0.4;
     }
 
     .check-btn.content-settings, .ui-dialog-buttonset .ui-button.ui-state-default
@@ -254,7 +294,7 @@ hr.style-one
         color: white;
         text-shadow: 0 1px #000000;
         text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-        font-size: 13px;
+        font-size: 14px;
         font-weight: bold;
         background: #4B8DF8;
         background: -webkit-linear-gradient(top, #4C8FFD, #4787ED);
@@ -296,27 +336,27 @@ hr.style-one
     font-weight: bold;
 }
 
-@font-face {
-	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot');
-	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('fonts/icomoon.woff') format('woff'),
-		url('fonts/icomoon.ttf') format('truetype'),
-		url('fonts/icomoon.svg#icomoon') format('svg');
-	font-weight: normal;
-	font-style: normal;
+@font-face
+{
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot');
+    src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('fonts/icomoon.woff') format('woff'), url('fonts/icomoon.ttf') format('truetype'), url('fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
-[data-icon]:before {
-	font-family: 'icomoon';
-	content: attr(data-icon);
-	speak: none;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
+[data-icon]:before
+{
+    font-family: 'icomoon';
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Use the following CSS code if you want to have a class per icon */
@@ -325,94 +365,164 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-cart, .icon-pencil, .icon-cart-2, .icon-file, .icon-file-2, .icon-fire, .icon-cog, .icon-cart-3, .icon-share, .icon-cart-4, .icon-upload, .icon-cloud-upload, .icon-info, .icon-signup, .icon-cogs, .icon-play, .icon-check-alt, .icon-basket, .icon-hammer, .icon-pencil-2, .icon-download, .icon-eye-blocked, .icon-plus, .icon-bell, .icon-yahoo, .icon-tags, .icon-redo {
-	font-family: 'icomoon';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
+.icon-cart, .icon-pencil, .icon-cart-2, .icon-file, .icon-file-2, .icon-fire, .icon-cog, .icon-cart-3, .icon-share, .icon-cart-4, .icon-upload, .icon-cloud-upload, .icon-info, .icon-signup, .icon-cogs, .icon-play, .icon-check-alt, .icon-basket, .icon-hammer, .icon-pencil-2, .icon-download, .icon-eye-blocked, .icon-plus, .icon-bell, .icon-yahoo, .icon-tags, .icon-redo, .icon-search, .icon-checkmark-circle, .icon-cancel-circle
+{
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
 }
-.icon-cart:before {
-	content: "\e000";
-}
-.icon-pencil:before {
-	content: "\e001";
-}
-.icon-cart-2:before {
-	content: "\e002";
-}
-.icon-file:before {
-	content: "\e003";
-}
-.icon-file-2:before {
-	content: "\e004";
-}
-.icon-fire:before {
-	content: "\e005";
-}
-.icon-cog:before {
-	content: "\e006";
-}
-.icon-cart-3:before {
-	content: "\e007";
-}
-.icon-share:before {
-	content: "\e008";
-}
-.icon-cart-4:before {
-	content: "\e009";
-}
-.icon-upload:before {
-	content: "\e00a";
-}
-.icon-cloud-upload:before {
-	content: "\e00b";
-}
-.icon-info:before {
-	content: "\e00c";
-}
-.icon-signup:before {
-	content: "\e00d";
-}
-.icon-cogs:before {
-	content: "\e00e";
-}
-.icon-play:before {
-	content: "\e00f";
-}
-.icon-check-alt:before {
-	content: "\e010";
-}
-.icon-basket:before {
-	content: "\e011";
-}
-.icon-hammer:before {
-	content: "\e012";
-}
-.icon-pencil-2:before {
-	content: "\e013";
-}
-.icon-download:before {
-	content: "\e014";
-}
-.icon-eye-blocked:before {
-	content: "\e015";
-}
-.icon-plus:before {
-	content: "\e016";
-}
-.icon-bell:before {
-	content: "\e017";
-}
-.icon-yahoo:before {
-	content: "\e018";
-}
-.icon-tags:before {
-	content: "\e019";
-}
-.icon-redo:before {
-	content: "\e01a";
-}
+
+    .icon-cart:before
+    {
+        content: "\e000";
+    }
+
+    .icon-pencil:before
+    {
+        content: "\e001";
+    }
+
+    .icon-cart-2:before
+    {
+        content: "\e002";
+    }
+
+    .icon-file:before
+    {
+        content: "\e003";
+    }
+
+    .icon-file-2:before
+    {
+        content: "\e004";
+    }
+
+    .icon-fire:before
+    {
+        content: "\e005";
+    }
+
+    .icon-cog:before
+    {
+        content: "\e006";
+    }
+
+    .icon-cart-3:before
+    {
+        content: "\e007";
+    }
+
+    .icon-share:before
+    {
+        content: "\e008";
+    }
+
+    .icon-cart-4:before
+    {
+        content: "\e009";
+    }
+
+    .icon-upload:before
+    {
+        content: "\e00a";
+    }
+
+    .icon-cloud-upload:before
+    {
+        content: "\e00b";
+    }
+
+    .icon-info:before
+    {
+        content: "\e00c";
+    }
+
+    .icon-signup:before
+    {
+        content: "\e00d";
+    }
+
+    .icon-cogs:before
+    {
+        content: "\e00e";
+    }
+
+    .icon-play:before
+    {
+        content: "\e00f";
+    }
+
+    .icon-check-alt:before
+    {
+        content: "\e010";
+    }
+
+    .icon-basket:before
+    {
+        content: "\e011";
+    }
+
+    .icon-hammer:before
+    {
+        content: "\e012";
+    }
+
+    .icon-pencil-2:before
+    {
+        content: "\e013";
+    }
+
+    .icon-download:before
+    {
+        content: "\e014";
+    }
+
+    .icon-eye-blocked:before
+    {
+        content: "\e015";
+    }
+
+    .icon-plus:before
+    {
+        content: "\e016";
+    }
+
+    .icon-bell:before
+    {
+        content: "\e017";
+    }
+
+    .icon-yahoo:before
+    {
+        content: "\e018";
+    }
+
+    .icon-tags:before
+    {
+        content: "\e019";
+    }
+
+    .icon-redo:before
+    {
+        content: "\e01a";
+    }
+
+    .icon-search:before
+    {
+        content: "\e01b";
+    }
+
+    .icon-checkmark-circle:before
+    {
+        content: "\e01c";
+    }
+
+    .icon-cancel-circle:before
+    {
+        content: "\e01d";
+    }

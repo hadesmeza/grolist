@@ -22,26 +22,15 @@
     @Scripts.Render("~/bundles/ajaxlogin")
     @Scripts.Render("~/bundles/GROLIAAS")
 </head>
-<body>
+<body class="@string.Format("gl-{0}", Request.Browser.IsMobileDevice ? "mobile" : "desktop")" >
     <div>
         <div id="header">
             <a href="@Url.Action("index", "Home")">
                 <div class="gl-brand">
-                    <span class="icon-file-2"></span><span style="font-size: 15px;">&#x2713;</span>
+                    <span class="icon-file-2" style="font-size:30px;color:#4B8DF8;margin-right:-15px;"></span><span style="font-size:30px;color:#67ae3f; font-weight:bold;">&#x2713;</span>
                 </div>
             </a>
-            <div>
-                <div class="menuitem">
-                    <div><span class="icon-info" title="about"></span></div>
-                </div>
-                <div class="menuitem">
-                    <div><span class="icon-hammer" style="color: orange;" title="Itemize"></span></div>
-                </div>
-                <div class="menuitem">
-                    <div>
-                        <span class="icon-pencil-2" style="color: green;" title="Edit list"></span>
-                    </div>
-                </div>
+            <div id="gl-toolbar">
             </div>
 
         </div>
@@ -57,6 +46,8 @@
         <br />
         <span class="icon-pencil-2"></span>&nbsp; Edit list
         <br />
+        <span class="icon-redo"></span>&nbsp; Hide Category
+        <br />
         <span class="icon-share"></span>&nbsp; Email or text link to partner :)
         <br />
         <br />
@@ -66,8 +57,8 @@
 
     </div>
     <div id="a-settings-dialog" style="display: none;" title="</span>New Item</span>">
-        <input  type="text" style="width: 100%; font-size: 13px;" maxlength="50" class="check-btn" name="" value="" />
-        <span class="a-settings-error icon-info" style="display: none"> value already exists !</span>
+        <input type="text" style="width: 100%; font-size: 13px;" maxlength="50" class="check-btn" name="" value="" />
+        <span class="a-settings-error icon-info" style="display: none">value already exists !</span>
     </div>
     <div id="r-settings-dialog" style="display: none;" title="</span>Remove Items</span>">
     </div>

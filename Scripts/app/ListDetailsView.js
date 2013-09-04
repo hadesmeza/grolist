@@ -3,7 +3,7 @@ GROLIAAS.define("GROLIAAS.ListDetailsView", {
     inherits: "GROLIAAS.ListSetUpView",
     constructor: function (context) {
         this.sharedlink = true;
-        this.session = new GROLIAAS.Session({ savedSession: JSON.parse( context.sharedSession ), sessionId: context.sessionId });
+        this.session = new GROLIAAS.Session({ savedSession: JSON.parse(context.sharedSession), sessionId: context.sessionId });
     },
 
     builAccord: function (store) {
@@ -67,8 +67,16 @@ GROLIAAS.define("GROLIAAS.ListDetailsView", {
         left.push("</div>");
         right.push("</div>");
         return "<div class='item-columns'>" + left.join("") + right.join("") + "</div>";
-    }
+    },
 
+    renderToolBar: function (){
+    var buttons = [
+        GROLIAAS.Button.getNew("about", "info", { color: "#4C8FFD" }),
+        GROLIAAS.Button.getNew("Edit List","pencil-2", {color:"green"})
+    ];
+        
+    new GROLIAAS.ToolBar({buttons:buttons}).render();
+},
 
 });
 
